@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskMaster - Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <div>
+        <div class="brand">
+          <i class="fa-solid fa-list-check logo-icon"></i>
+          <h2>TaskMaster</h2>
+        </div>
+
+        <nav class="nav-links">
+          <a href="#" class="nav-item active" data-status=""><i class="fa-solid fa-house"></i> All Tasks</a>
+          <a href="#" class="nav-item" data-status="Pending"><i class="fa-solid fa-clock"></i> Pending</a>
+          <a href="#" class="nav-item" data-status="Completed"><i class="fa-solid fa-circle-check"></i> Completed</a>
+        </nav>
+      </div>
+
+      <div class="user-profile">
+        <i class="fa-solid fa-circle-user avatar"></i>
+        <div class="user-info">
+          <span id="username-display">User</span>
+          <button id="logout-btn" class="btn-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="top-bar">
+        <h1>Dashboard</h1>
+        <div class="actions">
+          <button id="theme-toggle" class="btn btn-secondary">
+            <i class="fa-solid fa-moon"></i> Theme
+          </button>
+          <button id="open-modal-btn" class="btn btn-primary">
+            <i class="fa-solid fa-plus"></i> New Task
+          </button>
+        </div>
+      </header>
+
+      <section class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fa-solid fa-list-check"></i></div>
+          <div class="stat-info">
+            <p>Total Tasks</p>
+            <h3 id="stat-total">0</h3>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="stat-info">
+            <p>Completed</p>
+            <h3 id="stat-completed">0</h3>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon yellow"><i class="fa-solid fa-hourglass-half"></i></div>
+          <div class="stat-info">
+            <p>Pending</p>
+            <h3 id="stat-pending">0</h3>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div class="stat-info">
+            <p>Overdue</p>
+            <h3 id="stat-overdue">0</h3>
+          </div>
+        </div>
+      </section>
+
+      <section class="controls-bar">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="search-input" placeholder="Search tasks..." />
+        </div>
+        <div class="filters">
+          <select id="category-filter">
+            <option value="">All Categories</option>
+            <option value="Personal">Personal</option>
+            <option value="Work">Work</option>
+            <option value="Study">Study</option>
+            <option value="Shopping">Shopping</option>
+          </select>
+          <select id="priority-filter">
+            <option value="">All Priorities</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+          <select id="sort-filter">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="dueDate">Due Date</option>
+            <option value="priority">Priority</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="task-list" id="task-container"></section>
+    </main>
+  </div>
+
+  <div class="modal" id="task-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Create New Task</h2>
+        <span class="close-btn" id="close-modal">&times;</span>
+      </div>
+      <form id="task-form">
+        <div class="form-group">
+          <label>Task Title</label>
+          <input type="text" id="task-title" required placeholder="e.g., Complete Project Proposal" />
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea id="task-desc" rows="3" placeholder="Add detailed steps or details..."></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Priority</label>
+            <select id="task-priority">
+              <option value="Low">Low</option>
+              <option value="Medium" selected>Medium</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select id="task-category">
+              <option value="Personal">Personal</option>
+              <option value="Work">Work</option>
+              <option value="Study">Study</option>
+              <option value="Shopping">Shopping</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Due Date</label>
+          <input type="date" id="task-due" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Add Task</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
